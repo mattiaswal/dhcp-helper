@@ -24,8 +24,6 @@ addons:
 
 before_install:
   - docker run --privileged -d --name travis-ci -v $(pwd):/travis ubuntu:xenial tail -f /dev/null
-  - docker exec -t travis-ci bash -c "apt-get install -y openssl"
-  - docker exec -t travis-ci bash -c "echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-"
   - docker ps
 
 install:
